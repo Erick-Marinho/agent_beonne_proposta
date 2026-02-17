@@ -1,6 +1,14 @@
-def main():
-    print("Hello from agente-proposta!")
+import uvicorn
+from fastapi import FastAPI
 
+
+app = FastAPI()
+
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
 
 if __name__ == "__main__":
-    main()
+    # Para executar: `uvicorn app.main:app --reload` a partir da raiz do projeto.
+    uvicorn.run(app, host="0.0.0.0", port=8000)
